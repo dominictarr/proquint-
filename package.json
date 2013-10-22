@@ -1,0 +1,21 @@
+{
+  "name": "proquint",
+  "description": "convert buffers to and from the 'proquint' pronouncable representation",
+  "version": "0.0.0",
+  "homepage": "https://github.com/dominictarr/proquint",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/dominictarr/proquint.git"
+  },
+  "dependencies": {
+    "bops": "~0.1.0"
+  },
+  "devDependencies": {
+    "tape": "~2.0.0"
+  },
+  "scripts": {
+    "test": "set -e; for t in test/*.js; do node $t; done"
+  },
+  "author": "Dominic Tarr <dominic.tarr@gmail.com> (http://dominictarr.com)",
+  "license": "MIT"
+}
