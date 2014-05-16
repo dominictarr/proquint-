@@ -13,7 +13,7 @@ I wrote this on the plane not realizing that @deoxxa already had written the npm
 compliant to the spec, given 
 
 
-## examples
+## Examples
 
 ### 1. hash your public key
 
@@ -38,6 +38,35 @@ I recommend having your name legally changed to your
 proquint pronouncable hash. This strongly depends on the
 the country you are geolocated within,
 and is out of scope of this documentation.
+
+### Variations
+
+Proquints are a binary encoding intended for humans,
+so there are a few ways of encoding proquints that
+suit different ways that humans may want to use binary.
+
+#### proquint.encode
+
+`yabiv-huhaf fubar-kasom`.
+lower case, seperated by a dash then a space.
+(default)
+
+### proquint.encodeCamelDash
+
+`YabivHuhaf-FubarKasom`.
+camel case, with a dash every second proquint.
+Encoding without whitespace is easier to copy/paste
+because you can usually select it with a double click.
+
+### proquint.encodeCamel
+
+`YabivHuhafFubarKasom`.
+camel case, with no separator.
+
+### proquint-encodeDashLoDash
+
+`yabiv-huhaf_fubar-kasom`.
+lower case, seperated by a dash then an underscore.
 
 ## License
 
