@@ -31,15 +31,35 @@ tape('encode', function (t) {
 
 tape('decode', function (t) {
   examples.forEach(function (e) {
-
     t.deepEqual(proquint.decode(e[1]), e[0])
-
+  
   })
   t.end()
 })
 
-tape('encode(decode(random))', function (t) {
-  var rand = crypto.randomBytes(1024)
-  t.deepEqual(proquint.decode(proquint.encode(rand)), rand)
-  t.end()
+
+var encoders = ['encode', 'encodeCamel', 'encodeCamelDash', 'encodeDashLoDash']
+
+encoders.forEach(function (name) {
+
+  tape(name+'(decode(random))', function (t) {
+    var rand = crypto.randomBytes(1024)
+    t.deepEqual(proquint.decode(proquint[name](rand)), rand)
+    t.end()
+  })
+
+  tape(name+'(decode(small_random))', function (t) {
+    var rand2 = crypto.randomBytes(16)
+    var encoded = proquint[name](rand2)
+    console.log(encoded)
+    t.deepEqual(proquint.decode(encoded), rand2)
+    t.end()
+  })
+
+  tape(name+'(decode(random))', function (t) {
+    var rand2 = crypto.randomBytes(1024)
+    t.deepEqual(proquint.decode(proquint[name](rand2)), rand2)
+    t.end()
+  })
+
 })
