@@ -1,7 +1,7 @@
 {
   "name": "proquint-",
   "description": "convert buffers to and from the 'proquint' pronouncable representation",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "homepage": "https://github.com/dominictarr/proquint",
   "repository": {
     "type": "git",
