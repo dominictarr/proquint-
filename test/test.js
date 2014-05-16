@@ -1,5 +1,4 @@
 var tape = require('tape')
-var bops = require('bops')
 
 var proquint = require('../')
 var examples = [
@@ -31,7 +30,7 @@ tape('encode', function (t) {
 
 tape('decode', function (t) {
   examples.forEach(function (e) {
-    t.deepEqual(bops.to(proquint.decode(e[1]), 'hex'), bops.to(e[0], 'hex'))
+    t.deepEqual(new Buffer(proquint.decode(e[1]), 'hex'), new Buffer(e[0], 'hex'))
   })
   t.end()
 })
