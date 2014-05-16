@@ -33,7 +33,7 @@ function toLetters (b) {
 }
 
 function toBinary (s) {
-  s = s.replace(/[-\s]/, '')
+  s = s.replace(/[-\s]*/g, '')
   var b = new Buffer((s.length / 5) * 2)
 
   var i = 0, l = s.length, w = 0, word = 0
