@@ -22,11 +22,11 @@ function toLetters (b) {
     word = b[i] << 8 | b[i + 1]
 
     s += (!i ? '' : i%4 ? '-' : ' ')
-      + consonants[(word & 0xF000) >> 12]
-      + vowels    [(word & 0x0C00) >> 10]
-      + consonants[(word & 0x03C0) >>  6]
-      + vowels    [(word & 0x0030) >>  4]
-      + consonants[(word & 0x000F)      ]
+      + consonants[word >> 12 & 0xF]
+      + vowels    [word >> 10 & 0x3]
+      + consonants[word >>  6 & 0xF]
+      + vowels    [word >>  4 & 0x3]
+      + consonants[word       & 0xF]
 
   }
   return s
@@ -40,8 +40,8 @@ function toBinary (s) {
   for(var i =0; i < l; i += 5) {
     word = reverse[s[i]]   << 12
          | reverse[s[i+1]] << 10
-         | reverse[s[i+2]] << 6
-         | reverse[s[i+3]] << 4
+         | reverse[s[i+2]] <<  6
+         | reverse[s[i+3]] <<  4
          | reverse[s[i+4]]
 
     b[w++] = word >> 8
