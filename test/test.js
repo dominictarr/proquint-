@@ -1,4 +1,5 @@
 var tape = require('tape')
+var crypto = require('crypto')
 
 var proquint = require('../')
 var examples = [
@@ -30,7 +31,15 @@ tape('encode', function (t) {
 
 tape('decode', function (t) {
   examples.forEach(function (e) {
-    t.deepEqual(new Buffer(proquint.decode(e[1]), 'hex'), new Buffer(e[0], 'hex'))
+
+    t.deepEqual(proquint.decode(e[1]), e[0])
+
   })
+  t.end()
+})
+
+tape('encode(decode(random))', function (t) {
+  var rand = crypto.randomBytes(1024)
+  t.deepEqual(proquint.decode(proquint.encode(rand)), rand)
   t.end()
 })
