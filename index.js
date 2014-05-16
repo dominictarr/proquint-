@@ -1,53 +1,51 @@
-var bops = require('bops')
-
-    
 var consonants = 'bdfghjklmnprstvz'
-//'bcdfghjklmnpqrst' //vwxyz'
 var vowels = 'aiou'
 //    0 1 2 3 4 5 6 7 8 9 A B C D E F
 //    b d f g h j k l m n p r s t v z
+//    a i o u
+
+var reverse = {}
+
+var chars = consonants + vowels
+for(var i in consonants)
+  reverse[consonants[i]] = i
+for(var i in vowels)
+  reverse[vowels[i]] = i
 
 exports.encode = toLetters
 exports.decode = toBinary
+exports.buffer = false
 
 function toLetters (b) {
-  var s = ''
-  for(var i = 0; i < b.length; i += 2) {
-    var word = b[i] << 8 | b[i + 1]
-    function Const () {
-      var c = (word & 0xF000) >> 12
-      word = word << 4
-      return consonants[c]
-    }
-    function Vowel () {
-      var c = (word & 0xC000) >> 14
-      word = word << 2
-      return vowels[c]
-    }
-    s += (!i ? '' : i%4 ? '-' : ' ') + Const() + Vowel() + Const() + Vowel() + Const()
+  var s = '', l = b.length, word = 0
+  for(var i = 0; i < l; i += 2) {
+    word = b[i] << 8 | b[i + 1]
+
+    s += (!i ? '' : i%4 ? '-' : ' ')
+      + consonants[(word & 0xF000) >> 12]
+      + vowels    [(word & 0x0C00) >> 10]
+      + consonants[(word & 0x03C0) >>  6]
+      + vowels    [(word & 0x0030) >>  4]
+      + consonants[(word & 0x000F)      ]
+
   }
   return s
 }
 
 function toBinary (s) {
-  s = s.replace(/[- ]/, '')
-  var b = bops.create((s.length / 5) * 2)
-  var word = 0
-  function con (s) {
-    word = word << 4 | consonants.indexOf(s)
-  }
-  function vo (s) {
-    word = word << 2 | vowels.indexOf(s)
-  }
+  s = s.replace(/[-\s]/, '')
+  var b = new Buffer((s.length / 5) * 2)
 
-  var i = 0
-  while(s.length) {
-    word = 0
-    var a = s.substring(0, 5)
-    con(a[0]); vo(a[1]); con(a[2]); vo(a[3]); con(a[4])
-    b[i++] = word >> 8
-    b[i++] = word & 0xff
-    s = s.substring(5)
+  var i = 0, l = s.length, w = 0, word = 0
+  for(var i =0; i < l; i += 5) {
+    word = reverse[s[i]]   << 12
+         | reverse[s[i+1]] << 10
+         | reverse[s[i+2]] << 6
+         | reverse[s[i+3]] << 4
+         | reverse[s[i+4]]
+
+    b[w++] = word >> 8
+    b[w++] = word & 0xff
   }
   return b
 }
