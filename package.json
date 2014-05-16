@@ -7,11 +7,8 @@
     "type": "git",
     "url": "git://github.com/dominictarr/proquint.git"
   },
-  "dependencies": {
-    "bops": "~0.1.0"
-  },
   "devDependencies": {
-    "tape": "~2.0.0"
+    "tape": "~2.13.0"
   },
   "scripts": {
     "test": "set -e; for t in test/*.js; do node $t; done"
