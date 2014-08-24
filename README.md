@@ -63,7 +63,7 @@ because you can usually select it with a double click.
 `YabivHuhafFubarKasom`.
 camel case, with no separator.
 
-### proquint-encodeDashLoDash
+### proquint.encodeDashLoDash
 
 `yabiv-huhaf_fubar-kasom`.
 lower case, seperated by a dash then an underscore.
