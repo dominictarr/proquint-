@@ -2,8 +2,8 @@
 
 Convert buffers to and from the "proquint" pronouncable representation.
 
-[![travis](https://travis-ci.org/dominictarr/pronounceable-binary.png?branch=master)
-](https://travis-ci.org/dominictarr/pronounceable-binary)
+[![travis](https://travis-ci.org/dominictarr/proquint.png?branch=master)
+](https://travis-ci.org/dominictarr/proquint)
 
 [![testling](http://ci.testling.com/dominictarr/pronounceable-binary.png)
 ](http://ci.testling.com/dominictarr/pronounceable-binary)
