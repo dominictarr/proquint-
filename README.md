@@ -9,9 +9,11 @@ Convert buffers to and from the "proquint" pronouncable representation.
 ](http://ci.testling.com/dominictarr/pronounceable-binary)
 
 I wrote this on the plane not realizing that @deoxxa already had written the npm module.
-[proquint](https://github.com/deoxxa/proquint) except that his implementation is not
-compliant to the spec, given 
-
+[proquint](https://github.com/deoxxa/proquint) except that his implementation is _*not*
+compliant_ to the spec. I have made issued a
+[pull request](https://github.com/deoxxa/proquint/pull/2)
+But as of this writing it is still unmerged and uncommented.
+_tisk tisk tistk_.
 
 ## Examples
 
