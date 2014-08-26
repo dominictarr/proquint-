@@ -22,7 +22,7 @@ var crypto = require('crypto')
 var fs = require('fs')
 
 var pubkey = fs.readFileSync(process.env.HOME + '/.ssh/id_rsa.pub')
-var hash = crypto.creatHash('sha256').update(pubkey).digest()
+var hash = crypto.createHash('sha256').update(pubkey).digest()
 
 var proquint = require('proquint')
 console.log(proquint.encode(hash))
